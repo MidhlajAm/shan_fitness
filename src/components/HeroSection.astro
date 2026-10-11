@@ -131,6 +131,8 @@ const heroPhotos = [
       gallery.querySelectorAll<HTMLButtonElement>(".hero-dot"),
     );
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    // The phone layout can show less than half the photo on first arrival.
+    const visibleThreshold = 0.2;
     let active = 0;
     let visible = false;
     let timer: ReturnType<typeof setTimeout> | undefined;
@@ -164,10 +166,10 @@ const heroPhotos = [
     reducedMotion.addEventListener("change", schedule);
     new IntersectionObserver(
       ([entry]) => {
-        visible = (entry?.intersectionRatio ?? 0) >= 0.55;
+        visible = (entry?.intersectionRatio ?? 0) >= visibleThreshold;
         schedule();
       },
-      { threshold: 0.55 },
+      { threshold: visibleThreshold },
     ).observe(gallery);
     schedule();
   }

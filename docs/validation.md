@@ -7,7 +7,7 @@
 - Earlier browser checks at 320, 360, 375, 390, 430, 530, 768, 1024, and 1280 CSS pixels found no horizontal overflow. Desktop and phone compositions were visually inspected.
 - Mobile navigation opens and closes on Escape or selection. All anchor targets exist.
 - Shanoob CK's replacement portrait is first, followed by Ganesh and Praveen. Trainer crops are capped at 280 CSS pixels. The introductory red bar is removed, and standard WhatsApp and nutrition leaf artwork is used.
-- All four hero photos are included. Autoplay advances every 6.5 seconds when sufficiently visible, including while the gallery is hovered and a photo dot focused. Offscreen, background-tab, and reduced-motion pauses remain. Previous/next and play/pause buttons are removed at the owner's request.
+- All four hero photos are included. Autoplay advances every 6.5 seconds when at least 20% visible, including while the gallery is hovered and a photo dot focused. Offscreen, background-tab, and reduced-motion pauses remain. Previous/next and play/pause buttons are removed at the owner's request.
 - The four retained local films played successfully in the browser after moving, with durations 19.02, 33.43, 31.35, and 79.43 seconds. The duplicate fifth film and its cover were removed at the owner's request. The first film is labeled "Inside the gym". One native player switches films. Fresh loading remains paused with readyState 0. Native pause works; no media errors were reported.
 - All six services and thirteen contextual WhatsApp links use the confirmed business details. Images have appropriate alt text. The page has one H1, semantic landmarks, visible focus styles, and accurate ExerciseGym metadata.
 - The browser reported no errors or warnings. Images, fonts, scripts, styles, and video playback are served locally.
@@ -24,3 +24,7 @@ Vercel configuration builds the static Astro site into `dist/`. A production ori
 ## Limits
 
 No Lighthouse score or real-world Core Web Vitals measurement is claimed. Android/iOS device testing and confirmation that WhatsApp reaches the intended business account remain launch checks. The website has not been deployed to Vercel by this task.
+
+## Hero autoplay correction
+
+The phone viewport initially showed about 43% of the gallery, below the old 55% threshold. Autoplay stayed on the first photo for longer than one interval. Lowering the threshold to 20% allows automatic movement on first arrival. At the same 530 x 811 viewport, the active photo advanced from 1 to 3 across two intervals without input. After scrolling the gallery offscreen, the active photo stayed unchanged for longer than one interval. Background-tab and reduced-motion guards remain in place.

@@ -67,7 +67,7 @@ The owner confirmed both transformation pairs and the supplied video, including 
 
 HEIC conversions preserve proportions and remove image metadata. The genuine logo was extracted from the supplied PDF without redrawing or recoloring. To regenerate these assets locally, install Pillow and pillow-heif, then use `scripts/prepare-images.py`; logo extraction also needs Poppler and the render command in `scripts/extract-logo.py`.
 
-Videos use H.264/AAC and fast-start metadata. The sideways second Reel was rotated upright. Only intentional playback loads the selected video (`preload="none"`). The hero cycles through all four images every 6.5 seconds while at least 55% visible, with a gentle transition. It pauses offscreen, in background tabs, and for reduced-motion preferences. Photo dots and keyboard arrows allow manual selection. Without JavaScript, the first hero photo, navigation links, and native video controls remain usable.
+Videos use H.264/AAC and fast-start metadata. The sideways second Reel was rotated upright. Only intentional playback loads the selected video (`preload="none"`). The hero cycles through all four images every 6.5 seconds while at least 20% visible, with a gentle transition. It pauses offscreen, in background tabs, and for reduced-motion preferences. Photo dots and keyboard arrows allow manual selection. Without JavaScript, the first hero photo, navigation links, and native video controls remain usable.
 
 WhatsApp and nutrition icons use locally included Simple Icons and Lucide artwork; attribution is in `public/icon-licenses.txt`.
 
