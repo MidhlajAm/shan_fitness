@@ -1,0 +1,171 @@
+---
+import { Image } from "astro:assets";
+import { videos } from "../data/videos";
+import { siteConfig } from "../config/site";
+import Icon from "./Icon.astro";
+const firstVideo = videos[0];
+const initialFilmCount = `01 / ${String(videos.length).padStart(2, "0")}`;
+---
+
+<section class="video-section" id="inside" aria-labelledby="video-heading">
+  <div class="container video-layout">
+    <div class="video-copy" data-reveal>
+      <p class="section-kicker">A closer look</p><h2 id="video-heading">
+        THIS IS<br />SHAN FITNESS.
+      </h2><p>
+        The people. The space. The work.<br />Take a look inside before you take
+        your first step.
+      </p><div class="video-note">
+        <span class="video-note-line" aria-hidden="true"></span><span
+          >Press play. Get a feel for the gym.</span
+        >
+      </div><a
+        class="text-link"
+        href={siteConfig.youtubeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        ><Icon name="youtube" />Watch more on YouTube <Icon
+          name="diagonal"
+          size={18}
+        /></a
+      >
+    </div>
+    <div class="video-gallery" data-reveal>
+      <div
+        class="video-frame"
+        data-video-layout={firstVideo.poster.width > firstVideo.poster.height
+          ? "landscape"
+          : "portrait"}
+      >
+        <video
+          id="gym-video"
+          controls
+          playsinline
+          preload="none"
+          poster={firstVideo.poster.src}
+          aria-label={firstVideo.title}
+          width="720"
+          height="1280"
+          src={firstVideo.src}></video>
+        <button
+          class="video-play"
+          id="video-play"
+          type="button"
+          hidden
+          aria-label={`Play ${firstVideo.title} video`}
+          ><img
+            src={firstVideo.poster.src}
+            alt=""
+            width="540"
+            height="960"
+            loading="lazy"
+          /><span class="video-play-circle"><Icon name="play" size={26} /></span
+          ><span class="video-play-label"
+            ><span data-video-title>{firstVideo.title}</span>
+            <small data-video-duration
+              >Watch the film · {firstVideo.duration}</small
+            ></span
+          ></button
+        >
+        <p id="video-error" class="video-error" role="status" hidden>
+          Playback could not start. Use the video controls to try again.
+        </p>
+      </div>
+      <div class="video-picker">
+        <p>Choose a film <span>{initialFilmCount}</span></p>
+        <div class="video-options" aria-label="Gym films">
+          {
+            videos.map((film, index) => (
+              <a
+                href={film.src}
+                class="video-option"
+                aria-label={`Play ${film.title} (${film.duration})`}
+                aria-current={index === 0 ? "true" : undefined}
+                data-video-src={film.src}
+                data-video-poster={film.poster.src}
+                data-video-title={film.title}
+                data-video-duration={film.duration}
+                data-video-layout={
+                  film.poster.width > film.poster.height
+                    ? "landscape"
+                    : "portrait"
+                }
+              >
+                <Image
+                  src={film.poster}
+                  alt=""
+                  width={108}
+                  height={144}
+                  fit="cover"
+                  loading="lazy"
+                />
+                <span>{film.duration}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  const video = document.querySelector<HTMLVideoElement>("#gym-video");
+  const play = document.querySelector<HTMLButtonElement>("#video-play");
+  const error = document.querySelector<HTMLParagraphElement>("#video-error");
+  const choices = document.querySelectorAll<HTMLAnchorElement>(".video-option");
+  if (video && play) {
+    play.hidden = false;
+    const begin = async () => {
+      play.hidden = true;
+      if (error) error.hidden = true;
+      video.focus();
+      try {
+        await video.play();
+      } catch (failure) {
+        if (failure instanceof DOMException && failure.name === "AbortError")
+          return;
+        if (error) error.hidden = false;
+      }
+    };
+    play.addEventListener("click", begin);
+    choices.forEach((choice, index) => {
+      choice.addEventListener("click", (event) => {
+        event.preventDefault();
+        video.pause();
+        video.src = choice.dataset.videoSrc!;
+        video.poster = choice.dataset.videoPoster!;
+        video.parentElement?.setAttribute(
+          "data-video-layout",
+          choice.dataset.videoLayout!,
+        );
+        video.setAttribute("aria-label", choice.dataset.videoTitle!);
+        play.setAttribute(
+          "aria-label",
+          `Play ${choice.dataset.videoTitle} video`,
+        );
+        const cover = play.querySelector("img");
+        if (cover) cover.src = choice.dataset.videoPoster!;
+        const title = play.querySelector("[data-video-title]");
+        const duration = play.querySelector("[data-video-duration]");
+        if (title) title.textContent = choice.dataset.videoTitle!;
+        if (duration)
+          duration.textContent = `Watch the film · ${choice.dataset.videoDuration}`;
+        choices.forEach((option) => option.removeAttribute("aria-current"));
+        choice.setAttribute("aria-current", "true");
+        const count = document.querySelector(".video-picker > p > span");
+        if (count)
+          count.textContent = `${String(index + 1).padStart(2, "0")} / ${String(choices.length).padStart(2, "0")}`;
+        video.load();
+        void begin();
+      });
+    });
+    video.addEventListener("play", () => {
+      play.hidden = true;
+      if (error) error.hidden = true;
+    });
+    video.addEventListener("error", () => {
+      play.hidden = true;
+      if (error) error.hidden = false;
+    });
+  }
+</script>

@@ -1,0 +1,55 @@
+---
+import Brand from "./Brand.astro";
+import Icon from "./Icon.astro";
+import { siteConfig, whatsappUrl } from "../config/site";
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <Brand inverse /><p>Train with purpose.<br />Build with consistency.</p>
+      </div><div class="footer-location">
+        <h2>Find SHAN Fitness</h2><address>
+          {siteConfig.address.display}
+        </address><a
+          class="text-link"
+          href={whatsappUrl("general")}
+          target="_blank"
+          rel="noopener noreferrer"
+          >WhatsApp {siteConfig.whatsappNumberE164}<Icon
+            name="diagonal"
+            size={16}
+          /></a
+        >
+      </div><div class="footer-links">
+        <h2>Explore</h2><a href="#trainers">Our trainers</a><a href="#training"
+          >Training</a
+        ><a href="#approach">Our approach</a><a href="#progress"
+          >Member progress</a
+        >
+      </div><div class="footer-links">
+        <h2>Keep in touch</h2><a
+          href={siteConfig.instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          >Instagram <Icon name="diagonal" size={16} /></a
+        ><a
+          href={siteConfig.youtubeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          >YouTube <Icon name="diagonal" size={16} /></a
+        ><a
+          href={whatsappUrl("general")}
+          target="_blank"
+          rel="noopener noreferrer"
+          >WhatsApp <Icon name="diagonal" size={16} /></a
+        >
+      </div>
+    </div><div class="footer-bottom">
+      <span>© {new Date().getFullYear()} SHAN FITNESS</span><a href="#top"
+        >Back to top <Icon name="arrow" size={16} /></a
+      >
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,9 @@
+node_modules
+dist
+.astro
+.vercel
+source-assets
+tmp
+.tools
+.qa
+package-lock.json

@@ -1,0 +1,75 @@
+---
+import { Image } from "astro:assets";
+import photo from "../assets/hero/back-physique.jpg";
+import WhatsAppButton from "./WhatsAppButton.astro";
+import { siteConfig } from "../config/site";
+const steps = [
+  {
+    number: "01",
+    title: "Start with your goal.",
+    description:
+      "Tell us what you want to work towards, your training experience, and what fits your routine.",
+  },
+  {
+    number: "02",
+    title: "Make a plan that fits.",
+    description:
+      "Build your approach with customized workouts and nutrition guidance.",
+  },
+  {
+    number: "03",
+    title: "Keep showing up.",
+    description:
+      "Track your progress with follow-ups and supportive check-ins after missed sessions.",
+  },
+];
+---
+
+<section
+  class="approach-section"
+  id="approach"
+  aria-labelledby="approach-heading"
+>
+  <div class="container approach-layout">
+    <figure class="approach-photo" data-reveal>
+      <Image
+        src={photo}
+        alt={`${siteConfig.featuredTrainer.name} showing his back physique beside the gym's strength training equipment`}
+        widths={[480, 720, 960]}
+        sizes="(min-width: 900px) 42vw, 100vw"
+        format="webp"
+        loading="lazy"
+      /><figcaption>Consistency is a practice.</figcaption>
+    </figure>
+    <div class="approach-copy" data-reveal>
+      <p class="section-kicker">A personal approach</p><h2
+        id="approach-heading"
+      >
+        ONE STEP.<br />THEN THE NEXT.
+      </h2><p class="approach-intro">
+        You bring the commitment. We help you find your direction.
+      </p><ol class="approach-steps">
+        {
+          steps.map((step) => (
+            <li>
+              <>
+                <span class="step-number" aria-hidden="true">
+                  {step.number}
+                </span>
+                <div>
+                  <>
+                    <h3>{step.title}</h3>
+                    <p>{step.description}</p>
+                  </>
+                </div>
+              </>
+            </li>
+          ))
+        }
+      </ol><WhatsAppButton
+        context="general"
+        label="Let's talk about your goals"
+      />
+    </div>
+  </div>
+</section>

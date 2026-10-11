@@ -1,0 +1,46 @@
+---
+import { services } from "../data/services";
+import { whatsappUrl } from "../config/site";
+import Icon from "./Icon.astro";
+---
+
+<section
+  class="section container services-section"
+  id="training"
+  aria-labelledby="training-heading"
+>
+  <div class="section-heading" data-reveal>
+    <div>
+      <p class="section-kicker">Built around you</p><h2 id="training-heading">
+        YOUR GOALS.<br />OUR GUIDANCE.
+      </h2>
+    </div><p>
+      More than a workout. From a personalized plan to a check-in when you need
+      it, get support that helps you stay consistent.
+    </p>
+  </div>
+  <div class="services-grid">
+    {
+      services.map((service) => (
+        <a
+          class="service-card"
+          href={whatsappUrl(service.context)}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <>
+            <div class="service-icon">
+              <Icon name={service.icon} size={30} />
+            </div>
+            <h3>{service.name}</h3>
+            <p>{service.description}</p>
+            <span class="service-enquire">
+              Enquire on WhatsApp
+              <Icon name="diagonal" size={18} />
+            </span>
+          </>
+        </a>
+      ))
+    }
+  </div>
+</section>

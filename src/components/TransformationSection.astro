@@ -1,0 +1,73 @@
+---
+import { Image } from "astro:assets";
+import { transformations } from "../data/transformations";
+const approved = transformations.filter((member) => member.publicationApproved);
+---
+
+{
+  approved.length > 0 && (
+    <section
+      class="section container"
+      id="progress"
+      aria-labelledby="progress-heading"
+    >
+      <>
+        <div class="section-heading" data-reveal>
+          <>
+            <div>
+              <>
+                <p class="section-kicker">Member progress</p>
+                <h2 id="progress-heading">
+                  PERSONAL JOURNEYS.
+                  <br />
+                  VISIBLE PROGRESS.
+                </h2>
+              </>
+            </div>
+            <p>
+              Before and after, shared with permission.
+              <br />
+              Every journey is personal. Individual experiences and results
+              vary.
+            </p>
+          </>
+        </div>
+        <div class="transform-grid">
+          {approved.map((member, index) => (
+            <article
+              class="transformation"
+              data-reveal
+              aria-label={`Member ${index + 1} before and after comparison`}
+            >
+              <div class="comparison-pair">
+                <figure>
+                  <Image
+                    src={member.before}
+                    alt={`Member ${index + 1} before training progress`}
+                    widths={[240, 400, 600]}
+                    sizes="(min-width: 900px) 23vw, 45vw"
+                    format="webp"
+                    loading="lazy"
+                  />
+                  <figcaption>Before</figcaption>
+                </figure>
+                <figure>
+                  <Image
+                    src={member.after}
+                    alt={`Member ${index + 1} after training progress`}
+                    widths={[240, 400, 600]}
+                    sizes="(min-width: 900px) 23vw, 45vw"
+                    format="webp"
+                    loading="lazy"
+                  />
+                  <figcaption>After</figcaption>
+                </figure>
+              </div>
+              <p class="comparison-caption">A SHAN FITNESS member's journey</p>
+            </article>
+          ))}
+        </div>
+      </>
+    </section>
+  )
+}

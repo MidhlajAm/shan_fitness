@@ -1,0 +1,58 @@
+---
+import { Image } from "astro:assets";
+import { trainers } from "../data/trainers";
+import Icon from "./Icon.astro";
+---
+
+<section
+  class="section container"
+  id="trainers"
+  aria-labelledby="trainers-heading"
+>
+  <div class="section-heading" data-reveal>
+    <div>
+      <p class="section-kicker">The people in your corner</p><h2
+        id="trainers-heading"
+      >
+        GOOD COACHING.<br />BETTER HABITS.
+      </h2>
+    </div><p>
+      Meet the trainers behind SHAN FITNESS. Personal attention and consistent
+      guidance, through every part of your training.
+    </p>
+  </div>
+  <div class="trainer-grid">
+    {
+      trainers.map((trainer) => (
+        <article class="trainer-card" data-reveal>
+          <div class="trainer-image">
+            <>
+              <Image
+                src={trainer.photo}
+                alt={`${trainer.name}, trainer at SHAN FITNESS`}
+                widths={[320, 480, 640]}
+                sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw"
+                format="webp"
+                loading="lazy"
+                style={`object-position: ${trainer.position}`}
+              />
+              <span class="trainer-image-label">SHAN FITNESS</span>
+            </>
+          </div>
+          <div class="trainer-caption">
+            <>
+              <h3>{trainer.name}</h3>
+              <span>{trainer.role}</span>
+            </>
+          </div>
+          {trainer.achievement && (
+            <p class="trainer-achievement">
+              <Icon name="medal" size={20} />
+              <span>{trainer.achievement}</span>
+            </p>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</section>

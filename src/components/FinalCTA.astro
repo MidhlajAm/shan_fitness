@@ -1,0 +1,30 @@
+---
+import WhatsAppButton from "./WhatsAppButton.astro";
+import Icon from "./Icon.astro";
+import { siteConfig } from "../config/site";
+---
+
+<section class="final-cta" id="start" aria-labelledby="start-heading">
+  <div class="container final-cta-inner">
+    <div data-reveal>
+      <p>Your next step starts with a conversation.</p><h2 id="start-heading">
+        LET'S GET<br />TO WORK.
+      </h2>
+    </div><div class="final-cta-actions">
+      <WhatsAppButton context="general" variant="light" /><p>
+        Ask about personal training, online coaching,<br
+          class="desktop-break"
+        /> or a plan that fits your goals.
+      </p><a
+        class="text-link"
+        href={siteConfig.instagramUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        ><Icon name="instagram" size={20} />Follow on Instagram <Icon
+          name="diagonal"
+          size={18}
+        /></a
+      >
+    </div>
+  </div>
+</section>

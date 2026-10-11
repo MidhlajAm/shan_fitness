@@ -1,0 +1,28 @@
+---
+import { whatsappUrl } from "../config/site";
+import Icon from "./Icon.astro";
+interface Props {
+  context?: "personal" | "online" | "general";
+  label?: string;
+  variant?: "primary" | "light" | "outline";
+  class?: string;
+}
+const {
+  context = "personal",
+  label = "Chat on WhatsApp",
+  variant = "primary",
+  class: className = "",
+} = Astro.props;
+---
+
+<a
+  class:list={["button", `button--${variant}`, className]}
+  href={whatsappUrl(context)}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <Icon name="whatsapp" size={21} /><span>{label}</span><Icon
+    name="diagonal"
+    size={18}
+  />
+</a>

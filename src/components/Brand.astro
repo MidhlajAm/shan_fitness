@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/brand/shan-fitness-logo.png";
+import mark from "../assets/brand/shan-fitness-mark.png";
+import wordmark from "../assets/brand/shan-fitness-wordmark.png";
+interface Props {
+  inverse?: boolean;
+}
+const { inverse = false } = Astro.props;
+---
+
+<a
+  class:list={["brand", { "brand--inverse": inverse }]}
+  href="#top"
+  aria-label="SHAN FITNESS home"
+>
+  {
+    inverse ? (
+      <Image
+        src={logo}
+        alt="SHAN FITNESS — Your fitness destination"
+        format="png"
+        loading="lazy"
+        class="brand__logo"
+      />
+    ) : (
+      <>
+        <>
+          <Image src={mark} alt="" format="png" class="brand__mark" />
+          <Image
+            src={wordmark}
+            alt="SHAN FITNESS"
+            format="png"
+            class="brand__wordmark"
+          />
+        </>
+      </>
+    )
+  }
+</a>

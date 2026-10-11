@@ -1,0 +1,62 @@
+---
+import Brand from "./Brand.astro";
+import WhatsAppButton from "./WhatsAppButton.astro";
+const links = [
+  { href: "#trainers", label: "Our trainers" },
+  { href: "#training", label: "Training" },
+  { href: "#approach", label: "Our approach" },
+  { href: "#progress", label: "Member progress" },
+];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <Brand />
+    <nav class="desktop-nav" aria-label="Main navigation">
+      {links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </nav>
+    <WhatsAppButton class="header-cta" />
+    <details class="mobile-nav" id="mobile-navigation">
+      <summary aria-label="Open navigation" aria-expanded="false"
+        ><span class="menu-lines" aria-hidden="true"></span><span
+          class="menu-label">Menu</span
+        ></summary
+      >
+      <nav aria-label="Mobile navigation">
+        {
+          links.map((link) => <a href={link.href}>{link.label}</a>)
+        }<WhatsAppButton />
+      </nav>
+    </details>
+  </div>
+</header>
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>("#mobile-navigation");
+  const summary = menu?.querySelector("summary");
+  const closeMenu = () => {
+    if (menu) menu.open = false;
+  };
+  menu?.addEventListener("toggle", () => {
+    summary?.setAttribute("aria-expanded", String(menu.open));
+    summary?.setAttribute(
+      "aria-label",
+      menu.open ? "Close navigation" : "Open navigation",
+    );
+  });
+  menu
+    ?.querySelectorAll("a")
+    .forEach((link) => link.addEventListener("click", closeMenu));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menu?.open) {
+      closeMenu();
+      summary?.focus();
+    }
+  });
+  document.addEventListener("click", (event) => {
+    if (event.target instanceof Node && !menu?.contains(event.target))
+      closeMenu();
+  });
+  matchMedia("(min-width: 1100px)").addEventListener("change", (event) => {
+    if (event.matches) closeMenu();
+  });
+</script>

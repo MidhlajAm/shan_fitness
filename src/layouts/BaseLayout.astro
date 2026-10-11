@@ -1,0 +1,109 @@
+---
+import "@fontsource/barlow-condensed/600.css";
+import "@fontsource/barlow-condensed/700.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "../styles/global.css";
+import { siteConfig } from "../config/site";
+import { getImage } from "astro:assets";
+import socialImage from "../assets/hero/front-physique.jpg";
+const title = "SHAN FITNESS | Personal Training in Pulpatta, Malappuram";
+const canonical = Astro.site ? new URL("/", Astro.site).href : undefined;
+const socialPreview = await getImage({
+  src: socialImage,
+  width: 1200,
+  height: 630,
+  fit: "cover",
+  position: "center",
+  format: "jpeg",
+});
+const ogImage = Astro.site
+  ? new URL(socialPreview.src, Astro.site).href
+  : socialPreview.src;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "ExerciseGym",
+  name: siteConfig.name,
+  description: siteConfig.description,
+  telephone: siteConfig.whatsappNumberE164,
+  ...(canonical ? { url: canonical } : {}),
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: siteConfig.address.streetAddress,
+    addressLocality: siteConfig.address.addressLocality,
+    addressRegion: siteConfig.address.addressRegion,
+    postalCode: siteConfig.address.postalCode,
+    addressCountry: siteConfig.address.addressCountry,
+  },
+  sameAs: [siteConfig.instagramUrl, siteConfig.youtubeUrl],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head
+    ><meta charset="UTF-8" /><meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    /><title>{title}</title><meta
+      name="description"
+      content={siteConfig.description}
+    /><meta name="theme-color" content="#c31e25" /><link
+      rel="icon"
+      type="image/png"
+      href="/favicon.png"
+    />{canonical && <link rel="canonical" href={canonical} />}<meta
+      property="og:type"
+      content="website"
+    /><meta property="og:title" content={title} /><meta
+      property="og:description"
+      content={siteConfig.description}
+    /><meta property="og:site_name" content={siteConfig.name} /><meta
+      property="og:locale"
+      content="en_IN"
+    />{canonical && <meta property="og:url" content={canonical} />}<meta
+      property="og:image"
+      content={ogImage}
+    /><meta
+      property="og:image:alt"
+      content={`${siteConfig.featuredTrainer.name} at SHAN FITNESS, Pulpatta`}
+    /><meta name="twitter:card" content="summary_large_image" /><script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    /></head
+  ><body id="top"
+    ><a class="skip-link" href="#main-content">Skip to content</a><slot /></body
+  >
+</html>
+<script>
+  const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+  if (!reducedMotion.matches && "IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.animate(
+              [
+                { opacity: 0.35, transform: "translateY(18px)" },
+                { opacity: 1, transform: "translateY(0)" },
+              ],
+              { duration: 650, easing: "cubic-bezier(.2,.65,.25,1)" },
+            );
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
+    document
+      .querySelectorAll("[data-reveal]")
+      .forEach((element) => observer.observe(element));
+    reducedMotion.addEventListener("change", (event) => {
+      if (event.matches) {
+        observer.disconnect();
+        document.getAnimations().forEach((animation) => animation.finish());
+      }
+    });
+  }
+</script>
