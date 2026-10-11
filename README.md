@@ -49,7 +49,7 @@ The `source-assets/` folder keeps the supplied HEIC photographs and original log
 
 - `src/config/site.ts`: verified address, contact links, Shanoob CK's name and achievement.
 - `src/data/trainers.ts`: Shanoob CK first, then Ganesh and Praveen.
-- `src/data/services.ts`: six confirmed services.
+- `src/data/services.ts`: twelve confirmed services, including home personal training, weight loss, bodybuilding, ACL recovery, Pilates, and aerobics.
 - `src/data/videos.ts`: four owner-supplied Instagram Reel source links. Playback is local, with one native player and four film choices. The duplicate fifth video was removed at the owner's request.
 - `src/data/transformations.ts`: two exact before/after pairs and individual publication flags. Set `publicationApproved` to `false` and rebuild to omit a pair.
 
