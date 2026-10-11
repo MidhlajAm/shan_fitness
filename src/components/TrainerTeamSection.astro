@@ -45,10 +45,14 @@ import Icon from "./Icon.astro";
               <span>{trainer.role}</span>
             </>
           </div>
-          {trainer.achievement && (
+          {trainer.achievements.length > 0 && (
             <p class="trainer-achievement">
               <Icon name="medal" size={20} />
-              <span>{trainer.achievement}</span>
+              <span>
+                {trainer.achievements.map((achievement) => (
+                  <span>{achievement}</span>
+                ))}
+              </span>
             </p>
           )}
         </article>

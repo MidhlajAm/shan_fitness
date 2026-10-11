@@ -15,8 +15,11 @@ export const siteConfig = {
       "South Trippanachi, Manjeri–Kizhisseri Road, Pulpatta, Malappuram, Kerala 676123, India.",
   },
   featuredTrainer: {
-    name: "Shanoob CK",
-    achievement: "Mr. Kerala 2019 — Second Runner-up",
+    name: "Shanoop CK",
+    achievements: [
+      "Mr. Kerala Men's Physique — 2017",
+      "Mr. India participation",
+    ],
     // Keep rank optional until the owner confirms lead/main trainer wording.
     role: "",
   },

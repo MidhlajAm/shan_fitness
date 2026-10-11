@@ -3,28 +3,28 @@ import ganeshPhoto from "../assets/trainers/ganesh.png";
 import praveenPhoto from "../assets/trainers/praveen.webp";
 import { siteConfig } from "../config/site";
 
-// The owner confirmed the new portrait and spelling "Shanoob CK", 2026-10-11.
+// The owner confirmed the portrait, spelling "Shanoop CK", and achievements.
 // Array order controls display order. Rank remains optional, without guessing.
 export const trainers = [
   {
     name: siteConfig.featuredTrainer.name,
     photo: shanoobPhoto,
     position: "50% 55%",
-    achievement: siteConfig.featuredTrainer.achievement,
+    achievements: siteConfig.featuredTrainer.achievements,
     role: siteConfig.featuredTrainer.role || "Trainer",
   },
   {
     name: "Ganesh",
     photo: ganeshPhoto,
     position: "45% 35%",
-    achievement: "",
+    achievements: [],
     role: "Trainer",
   },
   {
     name: "Praveen",
     photo: praveenPhoto,
     position: "50% 20%",
-    achievement: "",
+    achievements: [],
     role: "Trainer",
   },
 ];

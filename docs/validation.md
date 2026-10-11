@@ -6,7 +6,7 @@
 - Formatting and static production build passed before and after cleanup.
 - Earlier browser checks at 320, 360, 375, 390, 430, 530, 768, 1024, and 1280 CSS pixels found no horizontal overflow. Desktop and phone compositions were visually inspected.
 - Mobile navigation opens and closes on Escape or selection. All anchor targets exist.
-- Shanoob CK's replacement portrait is first, followed by Ganesh and Praveen. Trainer crops are capped at 280 CSS pixels. The introductory red bar is removed, and standard WhatsApp and nutrition leaf artwork is used.
+- Shanoop CK's replacement portrait is first, followed by Ganesh and Praveen. Trainer crops are capped at 280 CSS pixels. The introductory red bar is removed, and standard WhatsApp and nutrition leaf artwork is used.
 - All four hero photos are included. Autoplay advances every 6.5 seconds when at least 20% visible, including while the gallery is hovered and a photo dot focused. Offscreen, background-tab, and reduced-motion pauses remain. Previous/next and play/pause buttons are removed at the owner's request.
 - The four retained local films played successfully in the browser after moving, with durations 19.02, 33.43, 31.35, and 79.43 seconds. The duplicate fifth film and its cover were removed at the owner's request. The first film is labeled "Inside the gym". One native player switches films. Fresh loading remains paused with readyState 0. Native pause works; no media errors were reported.
 - All twelve services and nineteen contextual WhatsApp links use the confirmed business details. Images have appropriate alt text. The page has one H1, semantic landmarks, visible focus styles, and accurate ExerciseGym metadata.
@@ -32,3 +32,7 @@ The phone viewport initially showed about 43% of the gallery, below the old 55% 
 ## Additional services
 
 The owner confirmed weight loss, bodybuilding, ACL recovery, Pilates, aerobics, and home personal training. Six cards were added to the existing services grid. Each new service has a matching WhatsApp enquiry message; the home enquiry asks about location availability. ACL recovery is described as training support, without asserting physiotherapy credentials or medical treatment. No prices or home-service area are assumed.
+
+## Trainer details correction
+
+The owner updated the first trainer's display name to Shanoop CK and confirmed Mr. Kerala Men's Physique (2017) and Mr. India participation. Both details appear on separate lines below his name. The previous 2019 and Second Runner-up wording is removed. Hero and trainer image descriptions use the updated name; the portrait itself is unchanged.

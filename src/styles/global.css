@@ -535,6 +535,10 @@
   .trainer-achievement svg {
     color: var(--red);
   }
+  .trainer-achievement > span {
+    display: grid;
+    gap: 2px;
+  }
   .video-section {
     background: var(--ink);
     color: #fff;
