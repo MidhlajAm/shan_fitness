@@ -36,3 +36,7 @@ The owner confirmed weight loss, bodybuilding, ACL recovery, Pilates, aerobics, 
 ## Trainer details correction
 
 The owner updated the first trainer's display name to Shanoop CK and confirmed Mr. Kerala Men's Physique (2017) and Mr. India participation. Both details appear on separate lines below his name. The previous 2019 and Second Runner-up wording is removed. Hero and trainer image descriptions use the updated name; the portrait itself is unchanged.
+
+## Directions links — 2026-10-15
+
+The owner-supplied Google Maps directions URL is shared by Get directions buttons beside the hero address and in the footer. Both links open a new tab with noopener and noreferrer, and have descriptive accessible labels. The compact outlined buttons have a 44-pixel minimum height and the hero address row can wrap on smaller screens. No map embed or geolocation permission is needed. The supplied destination data is preserved; Google tracking query parameters are omitted.

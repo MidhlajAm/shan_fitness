@@ -1,6 +1,7 @@
 ---
 import Brand from "./Brand.astro";
 import Icon from "./Icon.astro";
+import DirectionsLink from "./DirectionsLink.astro";
 import { siteConfig, whatsappUrl } from "../config/site";
 ---
 
@@ -12,7 +13,7 @@ import { siteConfig, whatsappUrl } from "../config/site";
       </div><div class="footer-location">
         <h2>Find SHAN Fitness</h2><address>
           {siteConfig.address.display}
-        </address><a
+        </address><DirectionsLink /><a
           class="text-link"
           href={whatsappUrl("general")}
           target="_blank"

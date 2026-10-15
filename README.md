@@ -47,7 +47,7 @@ The `source-assets/` folder keeps the supplied HEIC photographs and original log
 
 ## Content and media
 
-- `src/config/site.ts`: verified address, contact links, Shanoop CK's name and achievements.
+- `src/config/site.ts`: verified address, the owner-supplied Google Maps directions link, contact links, Shanoop CK's name and achievements.
 - `src/data/trainers.ts`: Shanoop CK first, then Ganesh and Praveen.
 - `src/data/services.ts`: twelve confirmed services, including home personal training, weight loss, bodybuilding, ACL recovery, Pilates, and aerobics.
 - `src/data/videos.ts`: four owner-supplied Instagram Reel source links. Playback is local, with one native player and four film choices. The duplicate fifth video was removed at the owner's request.

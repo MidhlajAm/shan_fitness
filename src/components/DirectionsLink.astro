@@ -1,0 +1,16 @@
+---
+import Icon from "./Icon.astro";
+import { siteConfig } from "../config/site";
+---
+
+<a
+  class="directions-link"
+  href={siteConfig.googleMapsUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Get directions to SHAN FITNESS (opens in a new tab)"
+>
+  <Icon name="pin" size={16} />
+  <span>Get directions</span>
+  <Icon name="diagonal" size={14} />
+</a>

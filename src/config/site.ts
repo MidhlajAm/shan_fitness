@@ -5,6 +5,8 @@ export const siteConfig = {
   whatsappNumberE164: "+918129961000",
   instagramUrl: "https://www.instagram.com/shan__fitness/",
   youtubeUrl: "https://www.youtube.com/@shanfitness4941/featured",
+  googleMapsUrl:
+    "https://www.google.com/maps/dir//526X%2BVV5+SHAN+FITNESS,+Manjeri+-+Kizhisseri+Rd,+Pulpatta,+South+Trippanachi,+Keralam+676123,+India/@11.0963583,76.0972005,15z/data=!3m1!4b1!4m8!4m7!1m0!1m5!1m1!1s0x3ba649006fe1530f:0xc60e6c7c83f77d6c!2m2!1d76.049735!2d11.162097",
   address: {
     streetAddress: "South Trippanachi, Manjeri–Kizhisseri Road, Pulpatta",
     addressLocality: "Malappuram",
