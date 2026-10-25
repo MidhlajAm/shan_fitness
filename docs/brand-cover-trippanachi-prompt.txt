@@ -1,0 +1,4 @@
+Tool: built-in image_gen (image edit)
+Input: src/assets/brand/shan-fitness-cover.jpg
+
+Edit this existing SHAN FITNESS cover image. Change only the small location text at the lower left, replacing "PULPATTA · MALAPPURAM" with exactly "TRIPPANACHI · MALAPPURAM". Match the current white uppercase lettering, tracking, font weight, baseline, and left alignment; slightly reduce tracking or font size only if necessary to fit the existing area. Preserve everything else exactly: the trainer's face, body, pose, clothing, equipment, photograph, logo artwork and all its text, large "TRAIN WITH PURPOSE." headline, red accents, background, lighting, colors, and full landscape composition. Do not regenerate or retouch the person or logo. Output the same 16:9 cover with only this location-word correction.
